@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <div class="container">
   <div class ="scores"> <a href= "highscores.html"> View Highscores </a></div>
   <div class="timer"> Time: <span id="time"> 0 </span></div>
   <div class=" wrapper">
@@ -23,6 +24,10 @@
     <div id="questions" class="Hide">
         <h2 id="question-title"></h2>
         <div id="choices" class="choices"></div> 
+            <button class="btn"> Answer 1</button>
+            <button class="btn"> Answer 2</button>
+            <button class="btn"> Answer 3</button>
+            <button class="btn"> Answer 4</button>
     </div>
 
     <div id="end-screen" class="Hide">
@@ -33,7 +38,9 @@
             <button id="submit">Submit</button>
          </p>
     </div>
-
+    <div class="controls">
+        <button id="next-btn" class="next-btn btn hide"> Next</button>
+    </div>
     <div id="feedback" class="feedback hide"></div>
   </div>
 </body>
