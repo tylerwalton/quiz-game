@@ -1,17 +1,29 @@
 var timerEl = document.querySelector("#time");
 var srtBtn = document.querySelector("#start");
 var srtScreen = document.querySelector("#start-screen");
-
+var questionsEl  = documentquerySelector('#questions')
 
 
 // lets get this mf started
 function beginQuiz () {
   countDown = 90;
-  srtBtn.disabled = true;
+  srtBtn.classList.add ('hide')
+  nextQuestion()
 }
+// Timer needs to start along with the game
+function beginTimer() {
+  var sec = 90;
+    timer  = setInterval(()=>{
+    timer.innerHTML = '00' +sec;
+     sec --;
+    }, 1000)
+}
+beginTimer()
 
+// function to go from question to question
+function nextQuestion() {
 
-
+}
 
 var questions = [
     {
