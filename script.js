@@ -1,28 +1,91 @@
-var timerEl = document.querySelector("#time");
-var srtBtn = document.querySelector("#start");
-var srtScreen = document.querySelector("#start-screen");
-var questionsEl  = documentquerySelector('#questions')
-
+var timerEl = document.querySelector("#time")
+var srtBtn = document.querySelector("#start")
+var srtScreen = document.querySelector("#start-screen")
+var questionsEl  = document.querySelector('#questions')
+var questionIndex = 0
+var questionTitle = document.querySelector("#question-title")
+var choices = document.querySelector("#choices")
+var endScreen = document.querySelector("#end-screen")
+var initials = document.querySelector("#initials")
+var feedback = document.querySelector("#feedback")
+var submit = document.querySelector("#submit")
+var sec = 90;
+var timer; 
+var finalScore = document.querySelector("#final-score")
 
 // lets get this mf started
 function beginQuiz () {
-  countDown = 90;
   srtBtn.classList.add ('hide')
+  beginTimer()
+  questionsEl.removeAttribute("class")
   nextQuestion()
 }
 // Timer needs to start along with the game
 function beginTimer() {
-  var sec = 90;
     timer  = setInterval(()=>{
-    timer.innerHTML = '00' +sec;
-     sec --;
+    sec--
+    timerEl.innerHTML = sec;
+    if (sec <= 0){
+        clearInterval (timer)
+    }
     }, 1000)
 }
-beginTimer()
+
 
 // function to go from question to question
 function nextQuestion() {
+  var currentQuestion = questions[questionIndex];
+  // questions [0].question= "How many Pokemnon were there when the show orginally launched?"
+  questionTitle.textContent = currentQuestion.question;
+  choices.innerHTML=""
+  currentQuestion.choices.forEach(function(input){
+    var choicesBtn=document.createElement("button")
+    choicesBtn.textContent=input.text 
+    choicesBtn.setAttribute("class", "btn")
+    choicesBtn.setAttribute("value", input.isCorrect)
+    choicesBtn.onclick = checkChoice
+    choices.append(choicesBtn)
+  })
 
+function checkChoice () {
+    if (this.value === "true") {
+        console.log ("Correct!")
+    } else {
+        console.log ("Wrong!")
+        sec = sec-10
+        timerEl.innerHTML=sec 
+    }
+    questionIndex++ 
+    if (questionIndex === questions.length) {
+        stopQuiz()
+    } else {
+        nextQuestion()
+    }
+}
+
+function stopQuiz () {
+    clearInterval (timer)
+    questionsEl.setAttribute("class", "hide")
+    finalScore.textContent = sec
+    endScreen.removeAttribute ("class")
+}
+
+}
+
+function saveScore () {
+    var scoreArray = JSON.parse (localStorage.getItem("scores")) || []
+    var newScore = {
+        score: sec, 
+        name: initials.value
+    }
+    scoreArray.push(newScore)
+    localStorage.setItem("scores", JSON.stringify(scoreArray))
+}
+//  creating function to display scores from scores array in local storage
+//  create list of highhscores that includes list items of users intials and score
+function showScore() {
+  var scoreArray = JSON.parse(localStorage.getItem("scores")) || [];
+//   taking indexs in array and create element into html that will display name and scores
 }
 
 var questions = [
@@ -72,14 +135,5 @@ var questions = [
         ],  
     },]
 
-// right or wrong answers
-function answers() {
-    var dataCorrect = this.dataset.isCorrect;
-    
-    if (dataCorrect) {
-        promptEl.textContent = "CORRECT!";
-    }
-    else {
-        promptEl.textContent = "WRONG!";
-    }
-}
+srtBtn.onclick = beginQuiz
+submit.onclick = saveScore

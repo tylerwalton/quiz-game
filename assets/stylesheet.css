@@ -37,3 +37,11 @@ body.wrong {
     padding: 10px;
     box-shadow: 0 0 10px 2px;
 }
+
+.hide {
+    display: none;
+}
+
+.btn {
+margin: 20px
+}
