@@ -12,14 +12,19 @@ var submit = document.querySelector("#submit")
 var sec = 90;
 var timer; 
 var finalScore = document.querySelector("#final-score")
+var sentence = document.querySelector("#first-text")
 
-// lets get this mf started
+// lets get this started
 function beginQuiz () {
   srtBtn.classList.add ('hide')
   beginTimer()
   questionsEl.removeAttribute("class")
   nextQuestion()
 }
+// clear beginning text after start
+// sentence.addEventListener ("click", function clearText () {
+//     document.getElementById("first-text").innerHTML= "";
+// }
 // Timer needs to start along with the game
 function beginTimer() {
     timer  = setInterval(()=>{
