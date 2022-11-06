@@ -12,7 +12,7 @@ var submit = document.querySelector("#submit")
 var sec = 90;
 var timer; 
 var finalScore = document.querySelector("#final-score")
-var sentence = document.querySelector("#first-text")
+var firstText = document.querySelector("text")
 
 // lets get this started
 function beginQuiz () {
@@ -21,6 +21,13 @@ function beginQuiz () {
   questionsEl.removeAttribute("class")
   nextQuestion()
 }
+
+
+// firstText.addEventListener ("click", function (){
+// = firstText.classList.add ("hide")
+// });
+
+
 // clear beginning text after start
 // sentence.addEventListener ("click", function clearText () {
 //     document.getElementById("first-text").innerHTML= "";
