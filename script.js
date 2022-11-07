@@ -83,7 +83,23 @@ function saveScore() {
 }
 
 // create a function to load the highscores from local storage
+function loadData() {
+  var load = localStorage.getItem("high scores");
 
+  if (!load) {
+    return false;
+  }
+
+  load = JSON.parse(load);
+
+  for (var i = 0; i < load.length; i++) {
+    var highScorestext = document.createElement("li");
+    highScorestext.classList.add("list", "text");
+    highScorestext.setAttribute("id", "quiz-mark");
+    highScorestext.textContent = load[i].name + " : " + load[i].highScore;
+    container.appendChild(highScorestext);
+  }
+}
 function clearHistory() {
     // clear localstorage
     window.localStorage.clear();
