@@ -1,7 +1,5 @@
 :root{
-    --color-neutral: rgb(231, 209, 9); 
-    --color-wrong: rgb(189, 1, 1);
-    --color-correct: rgb(33, 159, 175);
+    --color-neutral: rgb(5, 84, 187); 
 }
 
 body {
@@ -17,13 +15,6 @@ body {
     font-size: 2rem;
 }
 
-body.correct {
-    color: var(--color-correct);
-}
-
-body.wrong {
-    color: var(--color-wrong);
-}
 
 .container {
     width: 800px;
@@ -42,8 +33,4 @@ body.wrong {
 margin: 20px;
 font-size: 2rem;
 border-radius: 2px;
-}
-
-.hidden {
-    display: none;
 }

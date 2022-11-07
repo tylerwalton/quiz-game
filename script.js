@@ -12,14 +12,16 @@ var submit = document.querySelector("#submit")
 var sec = 90;
 var timer; 
 var finalScore = document.querySelector("#final-score")
-var firstText = document.querySelector("text")
+var firstText = document.querySelector("#text")
+
 
 // lets get this started
-function beginQuiz () {
-  srtBtn.classList.add ('hide')
-  beginTimer()
-  questionsEl.removeAttribute("class")
-  nextQuestion()
+https: function beginQuiz() {
+  srtBtn.classList.add("hide");
+  srtScreen.classList.add ("hide")
+  beginTimer();
+  questionsEl.removeAttribute("class");
+  nextQuestion();
 }
 
 
