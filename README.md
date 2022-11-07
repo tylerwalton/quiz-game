@@ -15,7 +15,7 @@ Here is a list of my motivations for this project!
 
 ## <u>**Screenshots**</u>
 
-![alt text](assets\tylerwalton.github.io_quiz-game_.png)
+![alt text](/assets/tylerwalton.github.io_quiz-game_.png)
 
 ## <u>**Author**</u>
 
