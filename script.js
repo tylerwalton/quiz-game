@@ -3,7 +3,7 @@ var srtBtn = document.querySelector("#start");
 var srtScreen = document.querySelector("#start-screen");
 var questionsEl = document.querySelector("#questions");
 var questionIndex = 0;
-var container = document.getElementsByClassName('container')
+var container = document.getElementsByClassName("container");
 var questionTitle = document.querySelector("#question-title");
 var choices = document.querySelector("#choices");
 var endScreen = document.querySelector("#end-screen");
@@ -82,21 +82,21 @@ function saveScore() {
   scoreArray.push(newScore);
   localStorage.setItem("scores", JSON.stringify(scoreArray));
 
-  loadData(); 
+  loadData();
 }
 
 // create a function to load the highscores from local storage
 function loadData() {
-  var load = localStorage.getItem("scores");  // targeted the right key in localstorage
-  console.log (load)
+  var load = localStorage.getItem("scores"); // targeted the right key in localstorage
+  console.log(load);
   if (!load) {
     return false;
   }
 
   load = JSON.parse(load);
-  let container1 = document.getElementById("scoreContainer"); // target a container to display scores 
+  let container1 = document.getElementById("scoreContainer"); // target a container to display scores
 
-  for (var i = load.length-5; i < load.length; i++) { // loop through five 
+  for (var i = 0; i < load.length; i++) {
     var highScorestext = document.createElement("li");
     highScorestext.classList.add("list", "text");
     highScorestext.setAttribute("id", "quiz-mark");
