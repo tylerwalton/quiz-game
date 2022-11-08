@@ -3,6 +3,7 @@ var srtBtn = document.querySelector("#start");
 var srtScreen = document.querySelector("#start-screen");
 var questionsEl = document.querySelector("#questions");
 var questionIndex = 0;
+var container = document.getElementsByClassName('container')
 var questionTitle = document.querySelector("#question-title");
 var choices = document.querySelector("#choices");
 var endScreen = document.querySelector("#end-screen");
@@ -80,33 +81,29 @@ function saveScore() {
   };
   scoreArray.push(newScore);
   localStorage.setItem("scores", JSON.stringify(scoreArray));
+
+  loadData(); 
 }
 
 // create a function to load the highscores from local storage
 function loadData() {
-  var load = localStorage.getItem("high scores");
-
+  var load = localStorage.getItem("scores");  // targeted the right key in localstorage
+  console.log (load)
   if (!load) {
     return false;
   }
 
   load = JSON.parse(load);
+  let container1 = document.getElementById("scoreContainer"); // target a container to display scores 
 
-  for (var i = 0; i < load.length; i++) {
+  for (var i = load.length-5; i < load.length; i++) { // loop through five 
     var highScorestext = document.createElement("li");
     highScorestext.classList.add("list", "text");
     highScorestext.setAttribute("id", "quiz-mark");
-    highScorestext.textContent = load[i].name + " : " + load[i].highScore;
-    container.appendChild(highScorestext);
+    highScorestext.textContent = load[i].name + " : " + load[i].score;
+    container1.appendChild(highScorestext);
   }
 }
-function clearHistory() {
-    // clear localstorage
-    window.localStorage.clear();
-    // clear history list under container
-    document.querySelectorAll("#quiz-mark").forEach(removeHistory => removeHistory.remove());
-}
-
 
 var questions = [
   {
